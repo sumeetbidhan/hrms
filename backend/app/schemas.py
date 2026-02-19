@@ -1,13 +1,23 @@
 # backend/app/schemas.py
+import re
 from datetime import date, datetime
-from pydantic import BaseModel, EmailStr, field_validator
+from pydantic import BaseModel, field_validator
+
+EMAIL_RE = re.compile(r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")
 
 
 class EmployeeCreate(BaseModel):
     employee_id: str
     full_name: str
-    email: EmailStr
+    email: str
     department: str
+
+    @field_validator("email")
+    @classmethod
+    def email_must_be_valid(cls, v: str) -> str:
+        if not EMAIL_RE.match(v):
+            raise ValueError("invalid email format")
+        return v
 
 
 class EmployeeResponse(BaseModel):
