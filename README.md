@@ -121,10 +121,11 @@ ethara/
 ### Backend (Render)
 
 1. Create a **Web Service** and connect your repo.
-2. **Runtime**: Python 3.
-3. **Build Command**: `pip install -r requirements.txt` (or leave default).
-4. **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port 10000`
-5. **Environment**: Add `DATABASE_URL` from your Render PostgreSQL instance (Internal Database URL).
+2. **Root Directory**: `backend`
+3. **Runtime**: Python 3.12 (via `backend/.python-version`). If builds fail with Python 3.14, add env var `PYTHON_VERSION=3.12.7` in Render dashboard.
+4. **Build Command**: `pip install -r requirements.txt`
+5. **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port 10000`
+6. **Environment**: Add `DATABASE_URL` from your Render PostgreSQL instance (Internal Database URL).
 
 Render assigns port 10000 by default; use that in the start command.
 
