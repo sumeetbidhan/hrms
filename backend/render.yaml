@@ -1,0 +1,4 @@
+# Optional: use this with Render Blueprint or set in Dashboard
+# Services -> Backend -> Build & Deploy:
+#   Build Command: pip install -r requirements.txt
+#   Start Command: uvicorn app.main:app --host 0.0.0.0 --port 10000
